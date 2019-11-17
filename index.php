@@ -19,6 +19,10 @@ $stm = $pdo->query("SELECT * FROM `products` WHERE 1");
 
 $products = $stm->fetchAll();
 
+$stm = $pdo->query("SELECT * FROM `comments` WHERE 1");
+
+$comments = $stm->fetchAll();
+
 ?>
 
 <body>
@@ -40,41 +44,21 @@ $products = $stm->fetchAll();
             </div>
             <h1 class="title">Comments</h1>
             <div class="comments">
-                <div class="comment">
-                    <div class="header">
-                        <span class="user">damjan</span>
-                        <span class="date">11.11.1999.</span>
+                <?php
+                foreach ($comments as $comment) {
+                    echo "
+                    <div class='comment'>
+                    <div class='header'>
+                        <span class='user'>{$comment["name"]}</span>
+                        <span class='date'>{$comment["date"]}</span>
                     </div>
-                    <p class="message">Ja sam bezobrazan</p>
-                </div>
-                <div class="comment">
-                    <div class="header">
-                        <span class="user">damjan</span>
-                        <span class="date">11.11.1999.</span>
-                    </div>
-                    <p class="message">Ja sam bezobrazan</p>
-                </div>
-                <div class="comment">
-                    <div class="header">
-                        <span class="user">damjan</span>
-                        <span class="date">11.11.1999.</span>
-                    </div>
-                    <p class="message">Ja sam bezobrazan</p>
-                </div>
-                <div class="comment">
-                    <div class="header">
-                        <span class="user">damjan</span>
-                        <span class="date">11.11.1999.</span>
-                    </div>
-                    <p class="message">Ja sam bezobrazan</p>
-                </div>
-                <div class="comment">
-                    <div class="header">
-                        <span class="user">damjan</span>
-                        <span class="date">11.11.1999.</span>
-                    </div>
-                    <p class="message">Ja sam bezobrazan</p>
-                </div>
+                        <p class='message'>{$comment["message"]}</p>
+                     </div>
+                    ";
+                }
+
+                ?>
+
             </div>
             <h1 class="title">New Comment</h1>
             <div class="form">
