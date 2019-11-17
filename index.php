@@ -19,7 +19,7 @@ $products = $stm->fetchAll();
 
 
 // fetching comments
-$stm = $pdo->query("SELECT * FROM `comments` WHERE 1");
+$stm = $pdo->query("SELECT * FROM `comments` WHERE status = \"approved\"");
 $comments = $stm->fetchAll();
 
 
