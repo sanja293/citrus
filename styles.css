@@ -1,0 +1,66 @@
+.wrapper {
+    /* background-color: blue; */
+}
+.content {
+    
+}
+.content .title {
+    text-align: center;
+}
+.content .catalog, 
+.content .comments,
+.content .form {
+    padding: 10px;
+    margin: 20px;
+}
+.content .catalog .card,
+.content .comments .comment,
+.content .form .element {
+    margin: 20px;
+    padding: 10px;
+    background-color: pink;
+}
+.content .catalog {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    
+}
+.content .catalog .card {
+    
+    /* max-width: 357px; */
+}
+.content .catalog .card .image {
+    width: 100%;
+}
+.content .catalog .card .title {
+    text-align: left;
+}
+.content .catalog .card .description {
+    
+}
+.content .comments {
+
+}
+.content .comments .comment {
+    padding-bottom: 1px; 
+}
+.content .comments .comment .user {
+    font-weight: bold;
+    margin-right: 20px;
+}
+.content .comments .comment .message {
+    background: #e8e8e8;
+    padding: 20px 5px;
+    margin: 5px 0;
+}
+.content .form {
+
+}
+.content .form .element {
+    background-color: inherit;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.content .form .element .input{
+    display: block;
+}
