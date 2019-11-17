@@ -9,56 +9,34 @@
     <title>Citrus</title>
 </head>
 
+<?php
+
+$dsn = "mysql:host=localhost;dbname=citrus";
+$user = "root";
+$passwd = "";
+$pdo = new PDO($dsn, $user, $passwd);
+$stm = $pdo->query("SELECT * FROM `products` WHERE 1");
+
+$products = $stm->fetchAll();
+
+?>
+
 <body>
     <div class="wrapper">
         <div class="content">
             <h1 class="title">Catalog</h1>
             <div class="catalog">
-                <div class="card">
-                    <img class="image" src="images/img1.jpg" />
-                    <h3 class="title">Title1</h3>
-                    <p class="description"> some description, about something...</p>
-                </div>
-                <div class="card">
-                    <img class="image" src="images/img1.jpg" />
-                    <h3 class="title">Title1</h3>
-                    <p class="description"> some description, about something...</p>
-                </div>
-                <div class="card">
-                    <img class="image" src="images/img1.jpg" />
-                    <h3 class="title">Title1</h3>
-                    <p class="description"> some description, about something...</p>
-                </div>
-                <div class="card">
-                    <img class="image" src="images/img1.jpg" />
-                    <h3 class="title">Title1</h3>
-                    <p class="description"> some description, about something...</p>
-                </div>
-                <div class="card">
-                    <img class="image" src="images/img1.jpg" />
-                    <h3 class="title">Title1</h3>
-                    <p class="description"> some description, about something...</p>
-                </div>
-                <div class="card">
-                    <img class="image" src="images/img1.jpg" />
-                    <h3 class="title">Title1</h3>
-                    <p class="description"> some description, about something...</p>
-                </div>
-                <div class="card">
-                    <img class="image" src="images/img1.jpg" />
-                    <h3 class="title">Title1</h3>
-                    <p class="description"> some description, about something...</p>
-                </div>
-                <div class="card">
-                    <img class="image" src="images/img1.jpg" />
-                    <h3 class="title">Title1</h3>
-                    <p class="description"> some description, about something...</p>
-                </div>
-                <div class="card">
-                    <img class="image" src="images/img1.jpg" />
-                    <h3 class="title">Title1</h3>
-                    <p class="description"> some description, about something...</p>
-                </div>
+                <?php
+                foreach ($products as $product) {
+                    echo "
+                        <div class='card'>
+                            <img class='image' src='images/{$product['image']}' />
+                            <h3 class='title'>{$product['title']}</h3>
+                            <p class='description'>{$product['description']}</p>
+                        </div>
+                        ";
+                }
+                ?>
             </div>
             <h1 class="title">Comments</h1>
             <div class="comments">
