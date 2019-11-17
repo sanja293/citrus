@@ -11,17 +11,17 @@
 
 <?php
 
-$dsn = "mysql:host=localhost;dbname=citrus";
-$user = "root";
-$passwd = "";
-$pdo = new PDO($dsn, $user, $passwd);
-$stm = $pdo->query("SELECT * FROM `products` WHERE 1");
+include('connect.php');
 
+// fetching products
+$stm = $pdo->query("SELECT * FROM `products` WHERE 1");
 $products = $stm->fetchAll();
 
-$stm = $pdo->query("SELECT * FROM `comments` WHERE 1");
 
+// fetching comments
+$stm = $pdo->query("SELECT * FROM `comments` WHERE 1");
 $comments = $stm->fetchAll();
+
 
 ?>
 
@@ -62,23 +62,24 @@ $comments = $stm->fetchAll();
             </div>
             <h1 class="title">New Comment</h1>
             <div class="form">
-                <div class="element">
-                    <label for="name">Name</label>
-                    <input class="input" id="name" type="text" placeholder="name" />
-                </div>
-                <div class="element">
-                    <label for="email">Email</label>
-                    <input class="input" id="email" type="email" placeholder="email" />
-                </div>
-                <div class="element">
-                    <label for="message">Message</label>
-                    <textarea class="input" id="message" rows="10" cols="50" placeholder="message"></textarea>
-                </div>
-                <div class="element">
-                    <input class="" id="btn-submit" type="button" value="Submit" />
-                    <input class="" id="btn-clear" type="button" value="Clear" />
-                </div>
-
+                <form action="save_comment.php" method="post">
+                    <div class="element">
+                        <label for="name">Name</label>
+                        <input class="input" id="name" name="name" type="text" placeholder="name" />
+                    </div>
+                    <div class="element">
+                        <label for="email">Email</label>
+                        <input class="input" id="email" name="email" type="email" placeholder="email" />
+                    </div>
+                    <div class="element">
+                        <label for="message">Message</label>
+                        <textarea class="input" id="message" name="message" rows="10" cols="50" placeholder="message"></textarea>
+                    </div>
+                    <div class="element">
+                        <input class="" id="btn-submit" type="submit" value="Submit" />
+                        <input class="" id="btn-clear" type="button" value="Clear" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>
